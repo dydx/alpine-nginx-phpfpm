@@ -1,5 +1,4 @@
-FROM alpine:edge
-MAINTAINER Josh Sandlin <josh@thenullbyte.org>
+FROM alpine:3.3
 
 RUN apk --update add \
   nginx \
@@ -14,7 +13,15 @@ RUN apk --update add \
   php-pdo_sqlite \
   php-ctype \
   php-zlib \
-  supervisor
+  php-curl \
+  php-phar \
+  php-xml \ 
+  curl \
+  supervisor \
+  && rm -rf /var/cache/apk/*
+
+# install composer
+RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/bin --filename=composer
 
 RUN mkdir -p /etc/nginx
 RUN mkdir -p /var/run/php-fpm
