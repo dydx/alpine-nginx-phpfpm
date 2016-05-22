@@ -15,7 +15,12 @@ RUN apk --update add \
   php-zlib \
   php-curl \
   php-phar \
-  php-xml \ 
+  php-xml \
+  php-opcache \
+  php-intl \
+  php-bcmath \
+  php-dom \
+  php-xmlreader \
   curl \
   supervisor \
   && rm -rf /var/cache/apk/*
